@@ -14,7 +14,7 @@ public class Customer extends Frame implements Runnable, ActionListener {
     Button send;
 
     // for data transfering need network
-    ServerSocket serverSocket;
+
     Socket socket;
 
     //Data transfering
@@ -31,8 +31,8 @@ public class Customer extends Frame implements Runnable, ActionListener {
         send.addActionListener(this);
 //in Connection stablishing time sometime we'll get error, so for handling this error using trycatch
         try {
-            serverSocket = new ServerSocket(12000); //it's only sometime will come error
-            socket = serverSocket.accept(); // accepting request from client side and storing in socket
+            socket = new Socket("localhost", 12000); // accepting request from client side and storing in socket
+
 
             dataInputStream = new DataInputStream(socket.getInputStream());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
